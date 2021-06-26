@@ -1,0 +1,174 @@
+/* Font */
+@font-face {
+	font-family: 'BebasNeue';
+	src: url(../fonts/BebasNeue-Regular.woff);
+}
+
+body {
+	font: 18px/36px 'BebasNeue', 'arial-narrow', 'arial';
+	background-color: #ddd;
+}
+
+h1 {
+	font-size: 80px;
+	margin: 50px 0;
+	text-align: center;
+	text-shadow: 1px 1px 2px white;
+}
+
+.container {
+	width: 600px;
+	background-color: white;
+	margin: auto;
+	padding: 30px;
+	box-shadow: 0 0 3px 3px rgba(0, 0, 0, .3);
+	border-radius: 5px;
+}
+
+.gallery li {
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	/*overflow: hidden;*/
+	border: 5px solid #666;
+	float: left;
+	margin-left: 20px;
+	position: relative;
+}
+
+.gallery li img {
+	border-radius: 50%;
+}
+
+.gallery li span {
+	display: block;
+	width: 120px;
+	height: 120px;
+	background-color: rgba(200, 200, 200, .5);
+	border-radius: 50%;
+	position: absolute;
+	top: 0;
+	text-align: center;
+	line-height: 120px;
+	color: #333;
+	text-shadow: 1px 1px 1px #ddd;
+	opacity: 0;
+	transform: scale(0) rotate(0);
+	transition: .3s;
+}
+
+.gallery li a:hover span {
+	opacity: 1;
+	transform: scale(1) rotate(360deg);
+}
+
+.clear {
+	clear: both;
+}
+
+/* overlay */
+.overlay {
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0);
+	z-index: 9999;
+	transition: .7s;
+	text-align: center;
+	position: 100px 0;
+	padding: 10px;
+}
+
+.overlay:target {
+	width: auto;
+	height: auto;
+	bottom: 0;
+	right: 0;
+	background: rgba(0, 0, 0, .7);
+}
+
+.overlay img {
+	max-height: 100%;
+	box-shadow: 2px 2px 7px rgba(0, 0, 0, .5);
+}
+
+.overlay video {
+	max-height: 100%;
+	box-shadow: 2px 2px 7px rgba(0, 0, 0, .5);
+}
+
+.overlay:target img {
+	animation: zoomdanfade 1s;
+}
+
+.overlay:target video {
+	animation: zoomdanfade 1s;
+}
+
+.overlay .close {
+	position: absolute;
+	top: 50px;
+	left: 50%;
+	margin-left: -21px;
+	color: white;
+	text-decoration: none;
+	background-color: black;
+	border: 1px solid white;
+	line-height: 14px;
+	padding: 5xp;
+	opacity: 0;
+}
+
+.overlay:target .close {
+	animation: close .5s .5s forwards;
+}
+
+/* navigasi */
+.next,
+.previous {
+	width: 60px;
+	height: 60px;
+	background-image: url(../img/right.png);
+	position: absolute;
+	text-indent: -9999px;
+	top: 50%;
+	margin-left: 30px;
+	background-repeat: no-repeat;
+}
+
+.previous {
+	background-image: url(../img/left.png);
+	margin-left: -90px;
+}
+
+/* animasi */
+@keyframes zoomdanfade {
+	0% {
+		transform: scale(0);
+		opacity: 0;
+	}
+
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+@keyframes close {
+	0% {
+		opacity: 0;
+		margin-top: -20px;
+	}
+
+	100% {
+		opacity: 1;
+		margin-top: 0;
+	}
+}
+
+.song {
+	display: none;
+}
